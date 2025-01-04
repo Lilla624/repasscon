@@ -17,46 +17,47 @@ import java.util.Scanner;
 public class App {
 public static void main(String[] args) {
 nevjegy();
-//Fejrész kiírása
+
 System.out.println("Jelszavak");
-//Verzió kiírása
+
 System.out.println("Verzió: 0.0.1");
 
-//Az a objektummal kérhetünk be a konzolról
-Scanner a = new Scanner(System.in);
+Scanner scanner = new Scanner(System.in);
 
 System.out.print("Felhasználónév: ");
-// A b változó tárolja a jelszót
-String b = a.nextLine();
+String username = scanner.nextLine();
 System.out.print("Jelszó: ");
-String c = a.nextLine();
+String password = scanner.nextLine();
 System.out.print("Hely: ");
-String d = a.nextLine();
-a.close();
-int iSiker = 0;
+String place = scanner.nextLine();
+scanner.close();
+
+int Siker = 0;
 try {
-    /* 
-    A jelszó, a felhasználónév és a 
-    használati helye a passList 
-    objektumban van tárolva            
-    */
-    Store passList = new Store(b, c, d);
-    FileWriter f = new FileWriter("pass.txt");
-    PrintWriter pwr = new PrintWriter(f);
-    pwr.print(passList.user);
-    if(!passList.hollow()) { pwr.print(passList.retrieval()); }
-    pwr.print(passList.place);
-    pwr.close();
-    iSiker = 1;
+    Store store = new Store(username, password, place);
+    FileWriter fileWriter = new FileWriter("passwords.txt");
+    PrintWriter printWriter = new PrintWriter(fileWriter);
+    if(store.getPassword() != null) {
+        printWriter.print("Felhasználónév: " + store.getUsername() + ", "); 
+        printWriter.print("Jelszó: " + store.getPassword() + ", ");
+        if (!store.getPlace().isEmpty()) {
+            printWriter.print("Hely: " + store.getPlace());
+        }
+    }
+    printWriter.close();
+    Siker = 1;
 } catch (IOException e) {
     System.err.println("Hiba! A fájlbaírás sikertelen. Keresse meg a fejlesztőt.");
 }
 
-if(iSiker == 1) { System.out.println("Ok. A kiírás sikeres.");  }else {  System.out.println("Hiba! A kiírás sikertelen"); }
-
+if(Siker == 1) { 
+    System.out.println("Ok. A kiírás sikeres.");  
+    }else { 
+    System.out.println("Hiba! A kiírás sikertelen."); 
+    }
 }
 
 public static void nevjegy() {
-System.out.println("Nagy János");
+System.out.println("Varga Lilla");
 }
 }

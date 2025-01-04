@@ -9,43 +9,29 @@
 * Licenc: MIT
 */
 
-//Itt következik a Store osztály
 public class Store {
     
-    /* 
-    A user adattag 
-    */
-    String user;
+    String username;
+
+    String password;
     
-    /* 
-    A pass adattag 
-    */
-    String pass;
-    
-    /* 
-    A place adattag 
-    */
     String place;
     
-    //Konstruktor
-    public Store(String a, String pass, String place) {
-        //Előkészítjük az adattagokat
-        this.user = a;
-        this.pass = pass;
+    public Store(String username, String password, String place) {
+        this.username = username;
+        this.password = password;
         this.place = place;
-    }//A konstruktor vége
+    }
+
+    public String getUsername() {
+        return username;
+    }
     
-    //Visszaadja a jelszót
-    public String retrieval() {
-        return pass;
-    }//A retrieval vége
-    
-    //Visszaadja a helyet
-    public boolean hollow() {
-        if(this.pass == "") {
-            return true;
-        }else {
-            return false;
-        }
+    public String getPassword() {
+        return password;
+    }
+
+    public String getPlace() {
+        return place;
     }
 }
