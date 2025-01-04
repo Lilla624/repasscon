@@ -2,6 +2,7 @@
 * File: App.java
 * Author: Sallai András
 * Copyright: 2024, Sallai András
+* Refactored: Varga Lilla, 2025-01-04
 * Group: szit
 * Date: 2024-12-15
 * Github: https://github.com/oktat/
@@ -42,7 +43,7 @@ try {
     Store passList = new Store(b, c, d);
     FileWriter f = new FileWriter("pass.txt");
     PrintWriter pwr = new PrintWriter(f);
-    pwr.print(passList.a);
+    pwr.print(passList.user);
     if(!passList.hollow()) { pwr.print(passList.retrieval()); }
     pwr.print(passList.place);
     pwr.close();
